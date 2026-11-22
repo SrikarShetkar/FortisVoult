@@ -1,0 +1,85 @@
+{
+  "name": "fortis-vault",
+  "version": "1.0.0",
+  "description": "Fortis Vault desktop account management demo",
+  "productName": "Fortis Vault",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
+    "test": "cd backend && npm test",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "build:frontend": "cd frontend && npm run build",
+    "start:desktop": "electron .",
+    "build:installer": "npm run build:frontend && electron-builder --win nsis --x64"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^10.6.0"
+  },
+  "devDependencies": {
+    "electron": "^39.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.fortisvault.desktop",
+    "productName": "Fortis Vault",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**",
+      "backend/**/*.js",
+      "backend/package.json",
+      "frontend/dist/**",
+      "package.json",
+      "!backend/.env",
+      "!backend/.env.*",
+      "!backend/database.sqlite*",
+      "!backend/tests/**",
+      "!backend/node_modules/**",
+      "!backend/package-lock.json",
+      "!frontend/node_modules/**",
+      "!frontend/src/**",
+      "!frontend/package*.json",
+      "!**/*.log"
+    ],
+    "win": {
+      "target": "nsis",
+      "artifactName": "Fortis-Vault-Setup.exe",
+      "signAndEditExecutable": true,
+      "signExecutable": true,
+      "signExts": [
+        ".dll"
+      ],
+      "forceCodeSigning": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Fortis Vault",
+      "uninstallDisplayName": "Fortis Vault"
+    }
+  },
+  "keywords": [
+    "banking",
+    "security",
+    "authentication",
+    "otp",
+    "dashboard",
+    "full-stack"
+  ],
+  "license": "ISC"
+}
