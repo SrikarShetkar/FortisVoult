@@ -538,5 +538,3 @@ Completing this project provided rigorous practical experience in enterprise-gra
 - **API Security**: Implemented defense-in-depth using Helmet headers, CORS policies, rate limiting, and session blacklisting.
 - **Frontend-Backend Integration**: Connected React hooks and context with backend services, including loading states, error handlers, and token persistence.
 - **Testing & Debugging**: Authored automated test suites with 28 passing unit and integration tests verifying all edge cases.
- 
- 
